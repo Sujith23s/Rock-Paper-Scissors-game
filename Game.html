@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    let's Play Rock, Paper, Scissors....
+    <button onclick="start()">Start the Game</button>
+
+</body>
+</html>
+<script>
+    function start(){
+    // Your First Interactive Game
+    let playGame = confirm("Shall we Start?")
+    if(playGame)
+    {
+        let PlayerChoice = prompt("Please enter Rock, Paper, Scissors.")
+
+        if(PlayerChoice)
+        {
+            let playerOne = PlayerChoice.trim().toLocaleLowerCase();
+            if( playerOne === "rock" ||
+                playerOne === "paper" ||
+                playerOne === "scissors"
+            )
+            {
+                let computerChoice = Math.floor(Math.random() * 3 + 1)
+                let computer = computerChoice === 1?"rock":
+                                computerChoice === 2?"paper": 
+                                "scissors"
+
+                let result = playerOne === computer? "Tie game!":
+                            playerOne === "rock" && computer === "paper" ? 'playerOne: '+playerOne+'\nComputer: '+computer+'\nComputer Wins!':
+                            playerOne === "paper" && computer === "scissors" ? 'playerOne: '+playerOne+'\nComputer: '+computer+'\nComputer Wins!':
+                            playerOne === "scissors" && computer === "rock" ? 'playerOne: '+playerOne+'\nComputer: '+computer+'\nComputer Wins!':
+                            'playerOne: '+playerOne+'\nComputer: '+computer+'\nPlayerOne Wins'
+                    alert(result)
+                    let playAgain = confirm("Play Again")
+                    playAgain ? location.reload() : alert("Okay, Thanks for playing..!")
+            }
+            else
+            {
+                alert("You don't enter rock, paper, scissors...")
+            }
+        }
+        alert("I guess you Changed your mind. Maybe next time.")
+    }
+    else
+    {
+        alert("Ok, maybe next time")
+    }
+}
+</script>
